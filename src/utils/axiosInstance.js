@@ -1,9 +1,9 @@
 import axios from "axios";
 
-// This will look for your variable in .env (VITE_API_URL)
-// If it's not found (like when running locally), it defaults to your local port.
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:4000",
+  // This looks for your VITE_API_URL from .env
+  // If not found, it defaults to your local development server
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:4000",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
