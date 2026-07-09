@@ -7,11 +7,17 @@ export const validEmail = (email) => {
 export const getInitials = (name) => {
   if (!name) return "";
 
-  const words = name.split(" ");
+  // 1. .trim() removes accidental spaces at the beginning or end
+  // 2. .split(/\s+/) splits by spaces, even if there are multiple spaces accidentally typed
+  const words = name.trim().split(/\s+/);
+
   let initials = "";
 
+  // Loop through up to 2 words safely
   for (let i = 0; i < Math.min(words.length, 2); i++) {
-    initials += words[i][0];
+    if (words[i] && words[i][0]) {
+      initials += words[i][0];
+    }
   }
 
   return initials.toUpperCase();
